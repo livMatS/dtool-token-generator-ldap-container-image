@@ -5,7 +5,7 @@ FROM python:3.8-slim
 #
 RUN apt-get --yes update && \
     apt-get --no-install-recommends --yes install git && \
-    git clone https://github.com/jic-dtool/token-generator-ldap.git /app && \
+    git clone https://github.com/jotelha/token-generator-ldap.git /app && \
     pip install -r /app/requirements.txt && \
     pip install gunicorn && \
     apt-get remove --purge --autoremove -y git && \

@@ -11,7 +11,7 @@
 name: build
 
 env:
-  image: jotelha/dtool-lookup-server
+  image: jotelha/dtool-token-generator-ldap
 
 on: [push, pull_request]
 
@@ -35,9 +35,6 @@ jobs:
         images: ${{ env.image }}
         tags: |
           type=raw,value=sha-${{ github.sha }}
-          type=sha
-      # type=raw,value=sha-${{ github.sha }} creates tags with full sha
-      # type=sha creates tags of format 'sha-1bf08cb',
 
     - name: Set up docker buildx
       uses: docker/setup-buildx-action@v1
@@ -56,7 +53,7 @@ jobs:
       uses: docker/build-push-action@v2
       with:
         context: .
-        file: ./compose/production/dtool_lookup_server/Dockerfile
+        file: ./compose/production/token_generator_ldap/Dockerfile
         platforms: linux/amd64
         tags: ${{ steps.docker_meta.outputs.tags }}
         labels: ${{ steps.docker_meta.outputs.labels }}
@@ -163,7 +160,7 @@ jobs:
         # override composition defaults to use local image
         # see https://github.com/jotelha/dtool-lookup-server-container-composition/blob/master/.env
         # use commit-specific github sha tag to identify image built above correctly
-        DTOOL_LOOKUP_SERVER_CONTAINER_IMAGE_VERSION: sha-${{ github.sha }}
+        DTOOL_TOKEN_GENERATOR_LDAP_CONTAINER_IMAGE_VERSION: sha-${{ github.sha }}
       run: |
         
         cd dtool-lookup-server-container-composition

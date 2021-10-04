@@ -10,4 +10,7 @@ Part of https://github.com/jotelha/dtool-lookup-server-container-composition.
 
 * `LDAP_USERS`
 * `LDAP_PASSWORDS`
-
+* `FLASK_CONFIG_FILE`
+* `FLASK_BINDING`
+* `JWT_PUBLIC_KEY_FILE`
+* `JWT_PRIVATE_KEY_FILE`

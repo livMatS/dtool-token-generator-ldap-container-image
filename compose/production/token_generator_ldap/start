@@ -1,4 +1,5 @@
 #!/bin/bash -x
 set -euxo pipefail
 
-gunicorn --bind=0.0.0.0:5001 wsgi:app
+FLASK_BINDING=${FLASK_BINDING:-'0.0.0.0:5001'}
+gunicorn --bind="${FLASK_BINDING}" wsgi:app

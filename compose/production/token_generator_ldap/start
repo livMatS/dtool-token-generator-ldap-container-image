@@ -1,5 +1,12 @@
 #!/bin/bash -x
 set -euxo pipefail
 
-FLASK_BINDING=${FLASK_BINDING:-'0.0.0.0:5001'}
-gunicorn --bind="${FLASK_BINDING}" wsgi:app
+FLASK_BINDING="${FLASK_BINDING:-'0.0.0.0:5001'}"
+GUNICORN_OPTS="--bind='${FLASK_BINDING}'"
+if [ -n "${SSL_CERT_FILE}" ]; then
+    GUNICORN_OPTS="${GUNICORN_OPTS} --certfile='${SSL_CERT_FILE}'"
+fi
+if [ -n "${SSL_KEY_FILE}" ]; then
+    GUNICORN_OPTS="${GUNICORN_OPTS} --keyfile='${SSL_KEY_FILE}'"
+fi
+gunicorn ${GUNICORN_OPTS} wsgi:app

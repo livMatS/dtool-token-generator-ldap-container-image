@@ -14,3 +14,5 @@ Part of https://github.com/jotelha/dtool-lookup-server-container-composition.
 * `FLASK_BINDING`
 * `JWT_PUBLIC_KEY_FILE`
 * `JWT_PRIVATE_KEY_FILE`
+* `SSL_CERT_FILE`
+* `SSL_KEY_FILE`

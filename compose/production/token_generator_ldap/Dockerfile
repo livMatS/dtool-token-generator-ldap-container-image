@@ -21,3 +21,6 @@ COPY compose/production/token_generator_ldap/production.cfg .
 COPY compose/production/token_generator_ldap/start /start
 RUN sed -i 's/\r//' /start
 RUN chmod +x /start
+
+# fix security policy for uni-freiburg rz ldap server
+RUN sed -i "s/^CipherString = DEFAULT@SECLEVEL=2/CipherString = DEFAULT@SECLEVEL=1/" /usr/lib/ssl/openssl.cnf

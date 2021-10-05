@@ -172,6 +172,9 @@ jobs:
         echo "docker container ls --all"
         docker container ls --all
 
+        echo "docker ps"
+        docker ps
+
         echo "docker volume ls"
         docker volume ls
         
@@ -183,6 +186,9 @@ jobs:
         
         echo "dtool lookup client log"
         docker-compose logs dtool_lookup_client
+
+        echo "dtool token generator log"
+        docker-compose logs token_generator_ldap
 
         # create dtool directory on samba share
         echo "smbclient -U guest -c "mkdir dtool" -N -W WORKGROUP //sambaserver/sambashare"

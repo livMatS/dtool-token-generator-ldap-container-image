@@ -1,7 +1,11 @@
 # sample for calling reusable workflow
 name: dtool-token-generator-ldap-container-image-build-and-test
 
-on: [push, pull_request]
+on: 
+  push:
+    branches:
+      - master
+  pull_request:
 
 jobs:
   build-and-test:
